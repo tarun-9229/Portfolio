@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajasthan Culture</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #f0f0f0;
+            padding: 20px;
+            background-image: url('path/to/your/image.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #quiz-container {
+            margin-bottom: 20px;
+        }
+
+        .question {
+            margin-bottom: 10px;
+        }
+
+        .answer {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Rajasthan Culture</h1>
+    </header>
+
+    <main>
+        <h2>Introduction to Rajasthan</h2>
+        <p>Rajasthan, the Land of Kings, is a state in northwestern India known for its rich history, vibrant culture, and stunning landscapes.</p>
+        <pre>
+            Rajasthan, the "Land of Kings," has a rich and storied history dating back millennia. Here's a glimpse:
+
+Ancient Period
+Indus Valley Civilization: Evidence suggests that parts of Rajasthan were part of this ancient civilization.
+Aryan Migration: Around 1500 BCE, Aryan tribes migrated to the region, influencing the culture and language.
+Early Kingdoms: Kingdoms like Matsya, Gurjara-Pratihara, and Chauhan emerged, shaping the political landscape.
+Medieval Period
+Rajput Rule: The Rajputs, known for their valor and chivalry, dominated Rajasthan for centuries. They established numerous kingdoms, each with its unique culture and traditions.
+Conquests: The region witnessed invasions by various empires, including the Mughals and the Marathas, leading to periods of conflict and assimilation.
+Resilience: Despite external pressures, the Rajputs maintained their cultural identity and often resisted invaders through strategic alliances and heroic battles.
+Modern Era
+British Colonial Rule: Rajasthan came under British colonial rule in the 19th century.
+Princely States: The region was divided into several princely states, each ruled by a Rajput ruler.
+Independence: After India's independence in 1947, these princely states were merged to form the state of Rajasthan.
+Post-Independence Development: Rajasthan has witnessed significant economic and social development since independence, while preserving its cultural heritage.
+Key Historical Events:
+
+Battle of Haldighati (1576): A famous battle between Maharana Pratap of Mewar and Mughal Emperor Akbar.
+Mewar's Resistance: Mewar, led by the Sisodias, was one of the most resilient Rajput kingdoms, resisting Mughal rule for centuries.
+Integration of Princely States: The unification of Rajasthan was a major achievement of post-independence India.
+
+
+
+        </pre>
+        <h2>Famous Forts and Palaces</h2>
+        <ul>
+            <li>Amber Fort</li>
+            <li>Jaipur City Palace</li>
+            <li>Umaid Bhawan Palace</li>
+        </ul>
+
+        <section>
+            <h2>Test Your Rajasthan Knowledge</h2>
+            <div id="quiz-container">
+                <div class="question">
+                    <p>What is the capital of Rajasthan?</p>
+                    <input type="radio" name="q1" value="a"> Jaipur<br>
+                    <input type="radio" name="q1" value="b"> Jodhpur<br>
+                    <input type="radio" name="q1" value="c"> Udaipur<br>
+                </div>
+                </div>
+            <button id="submit-btn">Submit Answers</button>
+            <div id="result"></div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2024 Rajasthan Culture Website
+    </footer>
+
+    <script>
+        const quizContainer = document.getElementById('quiz-container');
+        const submitBtn = document.getElementById('submit-btn');
+        const resultDiv = document.getElementById('result');
+
+        const questions = [
+            {
+                question: "What is the capital of Rajasthan?",
+                answers: [
+                    { text: "Jaipur", correct: true },
+                    { text: "Jodhpur", correct: false },
+                    { text: "Udaipur", correct: false }
+                ]
+            }
+            // Add more questions here
+        ];
+
+        function generateQuiz() {
+            questions.forEach(question => {
+                const questionDiv = document.createElement('div');
+                questionDiv.classList.add('question');
+                questionDiv.innerHTML = question.question;
+
+                question.answers.forEach(answer => {
+                    const answerDiv = document.createElement('div');
+                    answerDiv.classList.add('answer');
+                    const input = document.createElement('input');
+                    input.type = 'radio';
+                    input.name = `q${question.index}`;
+                    input.value = answer.correct;
+                    answerDiv.appendChild(input);
+                    answerDiv.appendChild(document.createTextNode(answer.text));
+                    questionDiv.appendChild(answerDiv);
+                });
+
+                quizContainer.appendChild(questionDiv);
+            });
+        }
+
+        function checkAnswers() {
+            let correctAnswers = 0;
+            const selectedAnswers = document.querySelectorAll('input[type="radio"]:checked');
+
+            selectedAnswers.forEach(answer => {
+                if (answer.value === "true") {
+                    correctAnswers++;
+                }
+            });
+
+            resultDiv.innerHTML = `You answered ${correctAnswers} out of ${questions.length} questions correctly.`;
+        }
+
+        generateQuiz();
+
+        submitBtn.addEventListener('click', checkAnswers);
+    </script>
+</body>
+</html>
